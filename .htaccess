@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# قاعدة لصفحة splash الرئيسية
+RewriteRule ^$ /Face/resources/pages/splash.php [L]
+
+# استثناء الملفات الثابتة
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|php|ico|svg)$ [NC]
+
+# توجيه باقي الطلبات
+RewriteRule ^(.*)$ index.php?request_site=$1 [QSA,L]
